@@ -1,0 +1,20 @@
+{
+  "name": "myapp1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [
+    "pdf",
+    "json"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
