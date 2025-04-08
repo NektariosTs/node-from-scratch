@@ -53,7 +53,7 @@ let userSchema = new Schema({
   },
   address: addressSchema,
   phone: { type: [phoneSchema], null: true },//dexomaste kai keno arithmo me to null
-  products: { type: [phoneSchema], null: true },
+  products: { type: [productSchema], null: true },
   roles: { type: [String], null: true }
 },
   {
