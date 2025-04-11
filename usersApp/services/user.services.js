@@ -5,14 +5,13 @@ const User = require("../models/user.model");
 
 
 function findAll() {
-  const result = User.find({ username: username });
+  const result = User.find();
   return result;
 }
 
-function findOne() {
-  const result = User.findOne();
+function findOne(username) {
+  const result = User.findOne({ username: username });
   return result;
 }
 
-module.exports = { findAll }
-module.exports = { findOne }
+module.exports = { findAll, findOne }

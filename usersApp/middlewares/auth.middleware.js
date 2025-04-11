@@ -23,8 +23,8 @@ function verifyToken(req, res, next) {
     return res.status(403).json({ status: false, data: result.data })
   }
 
-  req.user = result.data
-  next()
+  // req.user = result.data
+  // next()
 }
 
 function verifyRoles(allowedRole) {

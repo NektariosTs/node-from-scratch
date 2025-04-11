@@ -21,8 +21,8 @@ exports.findOne = async (req, res) => {
   let username = req.params.username;
 
   try {
-    // const result = await User.findOne({ username: username });
-    const result = await userService.findOne(username);
+    const result = await User.findOne({ username: username });
+    // const result = await userService.findOne(username);
     if (result) {
       res.status(200).json({ status: true, data: result });
     } else {
