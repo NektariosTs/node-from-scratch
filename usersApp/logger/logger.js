@@ -1,6 +1,6 @@
+// First Example
 
-//first example
-// const winston = require("winston");
+// const winston = require('winston');
 // const logger = winston.createLogger(
 //   {
 //     format: winston.format.json(),
@@ -10,31 +10,35 @@
 //   }
 // )
 
-//second example
-// const { format, createLogger, transports } = require("winston")
+// Second Example
+// const { format, createLogger, transports } = require('winston')
 // const { combine, timestamp, label, printf } = format
-// const CATEGORY = "Products app logs"
+// const CATEGORY  = "Products app logs"
 
-// const customFormat = printf(({level, message, label, timestamp }) => {
-//   return `${timestamp} [${label}: ${level}, ${message}]`;
+// const customFormat = printf(({level, message, label, timestamp})=>{
+//     return `${timestamp} [${label}: ${level}, ${message}]`;
 // })
 
 // const logger = createLogger({
-//   // level: "warn"
+//   // level: "warn",
 //   format: combine(
-//     label({ label: CATEGORY }),
+//     label({label: CATEGORY}),
 //     timestamp(),
 //     customFormat
 //   ),
 //   transports: [new transports.Console()]
-// })
+// }
 
-//third example
-require("winston-daily-rotate-file");
-require("winston-mongodb")
-const { format, createLogger, transports } = require("winston")
-const { combine, timestamp, label, printf, prettyPrint } = format
+// For jest tests
+// require('dotenv').config();
+
+// Third Example
+require('winston-daily-rotate-file');
+require('winston-mongodb')
+const { format, createLogger, transports } = require('winston');
+const { combine, timestamp, label, printf, prettyPrint } = format;
 const CATEGORY = "Products app logs";
+
 const fileRotateTransport = new transports.DailyRotateFile({
   filename: "./logs/rotate-%DATE%.log",
   datePattern: "DD-MM-YYYY",
@@ -45,7 +49,7 @@ const fileRotateTransport = new transports.DailyRotateFile({
 const logger = createLogger({
   format: combine(
     label({ label: "MY LABEL FOR PRODUCTS APP" }),
-    timestamp({ format: "DD-MM-YYYY HH:mm:ss" }),
+    timestamp({ format: "DD-MM-YYYY HH:mm:sss" }),
     format.json()
     // prettyPrint()
   ),
@@ -60,19 +64,19 @@ const logger = createLogger({
     new transports.File(
       {
         level: "warn",
-        filename: "logs/warn.log"
+        filename: 'logs/warn.log'
       }
     ),
     new transports.File(
       {
         level: "info",
-        filename: "logs/info.log"
+        filename: 'logs/info.log'
       }
     ),
     new transports.MongoDB({
       level: "warn",
       db: process.env.MONGODB_URI,
-      collection: "server_logs",
+      collection: 'server_logs',
       format: format.combine(
         format.timestamp(),
         format.json()
